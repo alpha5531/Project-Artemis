@@ -10,6 +10,10 @@ public class PropertiesRead {
     private String adresBazyDanych;
     private String loginBazyDanych;
     private String hasloBazyDanych;
+    private String pulaPolaczenMax;
+    private String pulaPolaczenMin;
+    private String czasZyciaPolaczenia;
+    private String czasOczekiwaniaNaPolaczenie;
     private String logowaniePlikiBaza;
     private String logowanieAdresBazy;
     private String logowanieLoginBazy;
@@ -27,6 +31,10 @@ public class PropertiesRead {
             this.adresBazyDanych = appProps.getProperty("adresBazyDanych");
             this.loginBazyDanych = appProps.getProperty("loginBazyDanych");
             this.hasloBazyDanych = appProps.getProperty("hasloBazyDanych");
+            this.pulaPolaczenMax = appProps.getProperty("pulaPolaczenMax");
+            this.pulaPolaczenMin = appProps.getProperty("pulaPolaczenMin");
+            this.czasZyciaPolaczenia = appProps.getProperty("czasZyciaPolaczenia");
+            this.czasOczekiwaniaNaPolaczenie = appProps.getProperty("czasOczekiwaniaNaPolaczenie");
             this.logowaniePlikiBaza = appProps.getProperty("logowaniePlikiBaza");
             this.logowanieAdresBazy = appProps.getProperty("logowanieAdresBazy");
             this.logowanieLoginBazy = appProps.getProperty("logowanieLoginBazy");
@@ -69,6 +77,22 @@ public class PropertiesRead {
         return hasloBazyDanych;
     }
 
+    public int getPulaPolaczenMax() {
+        return Integer.parseInt(pulaPolaczenMax);
+    }
+
+    public int getPulaPolaczenMin() {
+        return Integer.parseInt(pulaPolaczenMin);
+    }
+
+    public int getCzasZyciaPolaczenia() {
+        return Integer.parseInt(czasZyciaPolaczenia);
+    }
+
+    public int getCzasOczekiwaniaNaPolaczenie() {
+        return Integer.parseInt(czasOczekiwaniaNaPolaczenie);
+    }
+
     public String getLogowaniePlikiBaza() {
         return logowaniePlikiBaza;
     }
@@ -87,4 +111,5 @@ public class PropertiesRead {
     public String getCzasOdswiezania() {
         return CzasOdswiezania;
     }
+
 }
