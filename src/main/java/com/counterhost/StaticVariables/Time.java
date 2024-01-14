@@ -12,6 +12,9 @@ public class Time {
     public static LocalTime getLocalTime() {
         return LocalTime.now();
     }
+    public static LocalDateTime getCurrentDateTime() {
+        return LocalDateTime.now();
+    }
     public static String getDateAndTimePrecision() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss:SS");
