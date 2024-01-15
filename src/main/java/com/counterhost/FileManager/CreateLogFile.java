@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +24,7 @@ public class CreateLogFile {
 
     public CreateLogFile(String sciezka, String operation, String nazwaPliku) {
         logQueue.add(() -> writeLog(sciezka, operation, nazwaPliku));
-        executor.submit(logQueue.poll());
+        executor.submit(Objects.requireNonNull(logQueue.poll()));
     }
 
     private void writeLog(String sciezka, String operation, String nazwaPliku) {
@@ -46,9 +47,5 @@ public class CreateLogFile {
         } catch (IOException e) {
             new exLog(e);
         }
-    }
-
-    public static void shutdown() {
-        executor.shutdown();
     }
 }

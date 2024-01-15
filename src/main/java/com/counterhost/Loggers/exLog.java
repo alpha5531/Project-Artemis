@@ -19,7 +19,7 @@ public class exLog {
                 e.printStackTrace();
             }
     }
-    private void saveToLog(String name,Throwable problem){
+    private void saveToLog(String ClassName,Throwable problem){
         try {
             new CreateLogFile(sciezkaLogow, problem.toString(), "_exception.log");
         }catch (Exception e)

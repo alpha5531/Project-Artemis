@@ -8,7 +8,7 @@ import com.counterhost.Loggers.exLog;
 import java.sql.SQLException;
 
 public class BasketWorker {
-    private BasketDb basketDb;
+    private final BasketDb basketDb;
     public BasketWorker(){
         this.basketDb = new BasketDb();
     }
@@ -25,21 +25,24 @@ public class BasketWorker {
         }
         return basket;
     }
-    public Basket CloseBasket(int basketNr){
-        if(BasketValidator(basketNr)==BasketStatus.OPENED)
+    public BasketStatus CloseBasket(int basketNr){
+        BasketStatus status = BasketValidator(basketNr);
+
+        if(status== BasketStatus.OPENED)
         {
             Basket basket = new Basket();
-            basket.closeBasket(basketNr);
             try {
+                basket = basketDb.getBasket(basketNr);
+                basket.closeBasket(basketNr);
                 BasketDb basketDb = new BasketDb();
                 basketDb.updateBasket(basket);
             } catch (SQLException e) {
                 new exLog(getClass().getSimpleName(), e);
                 e.printStackTrace();
             }
-            return basket;
+            return BasketStatus.OPERATIONSUCCESFULL;
         }else {
-            return null;
+            return status;
         }
 
     }
@@ -55,15 +58,14 @@ public class BasketWorker {
     }
     public Basket infoBasket(int basketNr){
         try {
-            Basket basket = getBasket(basketNr);
-            return basket;
+            return getBasket(basketNr);
         }catch (SQLException e){
             new exLog(getClass().getSimpleName(),e);
             e.printStackTrace();
         }
         return null;
     }
-    public BasketStatus BasketValidator(int basketNr) {
+    private BasketStatus BasketValidator(int basketNr) {
         try {
             Basket basket = basketDb.getBasket(basketNr);
             if (basket != null) {

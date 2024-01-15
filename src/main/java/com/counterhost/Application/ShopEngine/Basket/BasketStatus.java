@@ -1,12 +1,13 @@
 package com.counterhost.Application.ShopEngine.Basket;
 
 public enum BasketStatus {
-    PAID(0),
-    NOTPAID(1),
-    OPENED(2),
-    CLOSED(3),
-    CANCELLED(4),
-    NODATA(5),
+    OPERATIONSUCCESFULL(0),
+    PAID(1),
+    NOTPAID(2),
+    OPENED(3),
+    CLOSED(4),
+    CANCELLED(5),
+    NODATA(6),
     ERROR(99);
 
     private final int value;
@@ -22,7 +23,7 @@ public enum BasketStatus {
     @Override
     public String toString() {
         return "BasketStatus{" +
-                "value=" + value +
+                "Status=" + new BasketError(value).toString() +
                 '}';
     }
 }

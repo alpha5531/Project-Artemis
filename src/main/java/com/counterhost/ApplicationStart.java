@@ -1,14 +1,11 @@
 package com.counterhost;
 
-import com.counterhost.Application.ShopEngine.Basket.Basket;
 import com.counterhost.Application.ShopEngine.Workers.BasketWorker.BasketWorker;
 
-import static com.counterhost.Dictionaries.PropertiesDictionary.properties;
-import static com.counterhost.StaticVariables.Time.getDateAndTimePrecision;
 
 public class ApplicationStart {
     public static void main(String[] args) {
-        System.out.printf(" Created By Zygmunt Postawa! \n");
+        System.out.print(" Created By Zygmunt Postawa! \n");
 
         System.out.println("               ____");
         System.out.println("          .-'\"\"p 8o\"\"`-.");
@@ -32,7 +29,7 @@ public class ApplicationStart {
             BasketWorker work = new BasketWorker();
 //            System.out.println(work.OpenBasket().toString());
 //        }
-        System.out.println(work.CloseBasket(2001).toString());
+        System.out.println(work.CloseBasket(1658).toString());
 
 
     }

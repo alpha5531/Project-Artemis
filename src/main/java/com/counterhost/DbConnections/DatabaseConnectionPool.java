@@ -8,7 +8,7 @@ import static com.counterhost.Dictionaries.PropertiesDictionary.properties;
 
 public class DatabaseConnectionPool {
 
-    private static HikariDataSource dataSource;
+    private static final HikariDataSource dataSource;
 
     static {
         HikariConfig config = new HikariConfig();
