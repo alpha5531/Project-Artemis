@@ -1,5 +1,8 @@
 package com.counterhost;
 
+import com.counterhost.Application.ShopEngine.Basket.Basket;
+import com.counterhost.Application.ShopEngine.Workers.BasketWorker.BasketWorker;
+
 import static com.counterhost.Dictionaries.PropertiesDictionary.properties;
 import static com.counterhost.StaticVariables.Time.getDateAndTimePrecision;
 
@@ -25,6 +28,12 @@ public class ApplicationStart {
         System.out.println("     `.          888PP'    ,'");
         System.out.println("       `-.      d8P'    ,-'   -ARTEMIS-");
         System.out.println("          `-.,,_'__,,.-'");
+//        for(int i = 0; i < 1000; i++){
+            BasketWorker work = new BasketWorker();
+//            System.out.println(work.OpenBasket().toString());
+//        }
+        System.out.println(work.CloseBasket(2001).toString());
+
 
     }
 }

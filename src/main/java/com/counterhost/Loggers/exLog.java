@@ -8,6 +8,9 @@ public class exLog {
     public exLog(Throwable exe) {
         saveToLog(exe);
     }
+    public exLog(String name,Throwable exe) {
+        saveToLog(name,exe);
+    }
     private void saveToLog(Throwable problem){
         try {
                 new CreateLogFile(sciezkaLogow, problem.toString(), "_exception.log");
@@ -15,5 +18,13 @@ public class exLog {
             {
                 e.printStackTrace();
             }
+    }
+    private void saveToLog(String name,Throwable problem){
+        try {
+            new CreateLogFile(sciezkaLogow, problem.toString(), "_exception.log");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -24,21 +24,21 @@ class BasketTest {
     @Test
     void closeBasket() {
         assertNull(basket.getTimeCloseBasket());
-        basket.closeBasket();
+        basket.closeBasket(1);
         assertNotNull(basket.getTimeCloseBasket());
     }
 
     @Test
     void payBasket() {
         assertNull(basket.getTimePaidBasket());
-        basket.payBasket();
+        basket.payBasket(2);
         assertNotNull(basket.getTimePaidBasket());
     }
 
     @Test
     void cancelBasket() {
         assertNull(basket.getTimeCancelledBasket());
-        basket.cancelBasket();
+        basket.cancelBasket(3);
         assertNotNull(basket.getTimeCancelledBasket());
     }
 }

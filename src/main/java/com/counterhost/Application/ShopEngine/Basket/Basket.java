@@ -1,7 +1,6 @@
 package com.counterhost.Application.ShopEngine.Basket;
 
 import com.counterhost.StaticVariables.Time;
-
 import java.time.LocalDateTime;
 
 public class Basket implements Baskets{
@@ -13,11 +12,12 @@ public class Basket implements Baskets{
     private boolean isBasketOpen;
     private boolean isBasketPaid;
     private boolean isBasketCancelled;
+    private Long basketOwnerId;
 
     public Basket() {
     }
 
-    public Basket(long basketNr, LocalDateTime timeOpenBasket, LocalDateTime timeCloseBasket, LocalDateTime timePaidBasket, LocalDateTime timeCancelledBasket, boolean isBasketOpen, boolean isBasketPaid, boolean isBasketCancelled) {
+    public Basket(long basketNr, LocalDateTime timeOpenBasket, LocalDateTime timeCloseBasket, LocalDateTime timePaidBasket, LocalDateTime timeCancelledBasket, boolean isBasketOpen, boolean isBasketPaid, boolean isBasketCancelled, Long basketOwnerId) {
         this.basketNr = basketNr;
         this.timeOpenBasket = timeOpenBasket;
         this.timeCloseBasket = timeCloseBasket;
@@ -26,6 +26,7 @@ public class Basket implements Baskets{
         this.isBasketOpen = isBasketOpen;
         this.isBasketPaid = isBasketPaid;
         this.isBasketCancelled = isBasketCancelled;
+        this.basketOwnerId = basketOwnerId;
     }
 
     @Override
@@ -34,11 +35,12 @@ public class Basket implements Baskets{
                 "basketNr=" + basketNr +
                 ", timeOpenBasket=" + timeOpenBasket +
                 ", timeCloseBasket=" + timeCloseBasket +
-                ", timePaidBaset=" + timePaidBasket +
+                ", timePaidBasket=" + timePaidBasket +
                 ", timeCancelledBasket=" + timeCancelledBasket +
                 ", isBasketOpen=" + isBasketOpen +
                 ", isBasketPaid=" + isBasketPaid +
                 ", isBasketCancelled=" + isBasketCancelled +
+                ", basketOwnerId=" + basketOwnerId +
                 '}';
     }
 
@@ -46,26 +48,32 @@ public class Basket implements Baskets{
     public void openBasket() {
         timeOpenBasket = Time.getCurrentDateTime();
         isBasketOpen = true;
-    }
 
+    }
     @Override
-    public void closeBasket() {
+    public void closeBasket(int basketNr) {
         timeCloseBasket = Time.getCurrentDateTime();
         isBasketOpen = false;
+        this.basketNr = basketNr;
     }
 
     @Override
-    public void payBasket() {
+    public void payBasket(int basketNr) {
         timePaidBasket = Time.getCurrentDateTime();
         isBasketOpen = false;
         isBasketPaid = true;
     }
 
     @Override
-    public void cancelBasket() {
+    public void cancelBasket(int basketNr) {
         timeCancelledBasket = Time.getCurrentDateTime();
         isBasketOpen = false;
         isBasketCancelled = true;
+    }
+
+    @Override
+    public void infoBasket(int basketNr) {
+
     }
 
     public long getBasketNr() {
@@ -106,6 +114,14 @@ public class Basket implements Baskets{
 
     public void setTimeCancelledBasket(LocalDateTime timeCancelledBasket) {
         this.timeCancelledBasket = timeCancelledBasket;
+    }
+
+    public Long getBasketOwnerId() {
+        return basketOwnerId;
+    }
+
+    public void setBasketOwnerId(Long basketOwnerId) {
+        this.basketOwnerId = basketOwnerId;
     }
 
     public boolean isBasketOpen() {
